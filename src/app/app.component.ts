@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'FoodOrderApp';
+
+
+  playSound(){
+    let audio = new Audio();
+    audio.src= "../assets/ping.mp3";
+    audio.load();
+    audio.play();
+  }
 }
+
+
+
+

@@ -1,0 +1,47 @@
+
+<!-- " -->
+<app-not-found [visible]="!card || card.items.length <=0" notFoundMessage="Card Page is Empty!"
+resetLinkText="Go to Homepage"></app-not-found>
+<div *ngIf="card && card.items.length >0" class="container">
+    <ul>
+        <li *ngFor="let cardItem of card.items">
+            <div>
+                <img [src]="cardItem.food.imageUrl" [alt]="cardItem.food.name">
+            </div>
+            <div>
+               
+               <a routerLink="/food/{{cardItem.food.id}}">
+                    {{cardItem.food.name}}
+                </a>
+            </div>
+
+            <div>
+                <select #quantitySelect (change)="changeQuantity(cardItem,quantitySelect.value)">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+
+            <div>
+                {{cardItem.price | currency}}
+            </div>
+
+            <div>
+                <button class="remove-button" (click)="removeFromCard(cardItem)">
+                    Remove
+                </button>
+            </div>
+        </li>
+    </ul>
+    <div class="checkout">
+        <div>
+            <div class="foods-count">{{card.items.length}}</div>
+            <div class="total-price">{{card.totalPrice | currency}}</div>
+        </div>
+    </div>
+
+</div>
+
